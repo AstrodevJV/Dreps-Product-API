@@ -1,17 +1,16 @@
-FROM ubuntu:latest
-LABEL authors="sergio"
-# Usa una imagen base con Java 21
-FROM eclipse-temurin:21-jdk
-
-# Establece el directorio de trabajo dentro del contenedor
+# Etapa 1: build
+FROM eclipse-temurin:21-jdk AS builder
 WORKDIR /app
 
-# Copia el archivo JAR desde tu máquina al contenedor
-COPY build/libs/DrespApiProductos-0.0.1-SNAPSHOT.jar app.jar
+COPY . .
+RUN ./gradlew clean build -x test
 
-# Expón el puerto de tu aplicación Spring Boot
+# Etapa 2: run
+FROM eclipse-temurin:21-jdk
+WORKDIR /app
+
+COPY --from=builder /app/build/libs/*.jar app.jar
+
 EXPOSE 8080
 
-# Comando que ejecuta tu app
 ENTRYPOINT ["java", "-jar", "app.jar"]
-
