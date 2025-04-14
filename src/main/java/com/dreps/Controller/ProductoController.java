@@ -30,12 +30,18 @@ public class ProductoController {
     @CrossOrigin(origins = "*")
     @GetMapping("/productos")
     public ResponseEntity<Page<ProductoModel>> getProductosPage(@RequestParam int page, @RequestParam int size) {
+        return ResponseEntity.ok(productoService.getProductosByPage(page, size));
+    }
 
-        Pageable pageable = PageRequest.of(page, size);
+    @CrossOrigin(origins = "*")
+    @GetMapping("/findByCategoryAndGender")
+    public ResponseEntity<Page<ProductoModel>> getProductosByCategoryAndGender(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) String gender) {
 
-        Page<ProductoModel> productos = productoService.getProductosByPage(pageable);
-
-        return ResponseEntity.ok(productos);
+        return ResponseEntity.ok(productoService.getProductosByCategoryAndGender(page, size, category, gender));
     }
 
     @GetMapping("/Hello")
