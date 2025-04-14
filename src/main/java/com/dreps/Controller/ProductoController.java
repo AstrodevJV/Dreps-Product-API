@@ -21,8 +21,8 @@ public class ProductoController {
     @Autowired
     private ProductoService productoService;
 
-
-   @GetMapping("/findall")
+    @CrossOrigin(origins = "*")
+    @GetMapping("/findall")
     public List<ProductoModel> findAll() {
         return productoService.findAll();
     }
