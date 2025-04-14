@@ -27,6 +27,7 @@ public class ProductoController {
         return productoService.findAll();
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/productos")
     public ResponseEntity<Page<ProductoModel>> getProductosPage(@RequestParam int page, @RequestParam int size) {
 
