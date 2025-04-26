@@ -23,7 +23,7 @@ public class ProductoService {
         this.productoRepository = productoRepository;
     }
 
-    public List<ProductoModel> findAll(){
+    public List<ProductoModel> findAllAsc(){
         return productoRepository.findAllOrderByIdAsc();
     }
 
