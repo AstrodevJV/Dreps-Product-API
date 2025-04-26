@@ -38,8 +38,8 @@ public class ProductoController {
     public ResponseEntity<Page<ProductoModel>> getProductosByCategoryAndGender(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
-            @RequestParam(required = false) String category,
-            @RequestParam(required = false) String gender) {
+            @RequestParam String category,
+            @RequestParam String gender) {
 
         return ResponseEntity.ok(productoService.getProductosByCategoryAndGender(page, size, category, gender));
     }
