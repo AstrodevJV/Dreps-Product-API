@@ -41,16 +41,18 @@ public class ProductoService {
         return productoRepository.findByCategoryAndGender(category,gender,pageable);
     }
 
-    public List<ProductoModel> getProductosByName(int page,int size,String name) {
-
+    public Page<ProductoModel> getProductosByName(int page, int size, String name) {
         Pageable pageable = PageRequest.of(page, size);
-        List<ProductoModel> products = productoRepository.findByNombre(name,pageable);
+        String nameLike = "%" + name + "%";
 
-        if(products.isEmpty()){
-            throw new ProductNotFoundException("Nombre no encontrado" + name);
+        Page<ProductoModel> products = productoRepository.findByNombre(nameLike, pageable);
+
+        if (products.isEmpty()) {
+            throw new ProductNotFoundException("Nombre no encontrado " + name);
         }
         return products;
     }
+
 
 
 }
