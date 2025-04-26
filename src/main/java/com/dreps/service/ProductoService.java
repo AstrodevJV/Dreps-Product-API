@@ -24,7 +24,7 @@ public class ProductoService {
     }
 
     public List<ProductoModel> findAll(){
-        return productoRepository.findAll();
+        return productoRepository.findAllOrderByIdAsc();
     }
 
     public Page<ProductoModel> getProductosByPage(int page,int size) {
