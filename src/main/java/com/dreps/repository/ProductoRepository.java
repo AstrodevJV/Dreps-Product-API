@@ -15,7 +15,7 @@ import java.util.List;
 public interface ProductoRepository extends JpaRepository<ProductoModel,Long> {
 
     @Query("SELECT p FROM ProductoModel p ORDER BY p.id ASC")
-    List<ProductoModel> findAllOrderByIdAsc();
+    List<ProductoModel> findAllOrderByIdAsc(Pageable pageable);
 
     @Query("SELECT p FROM ProductoModel p JOIN p.categoria c " +
             "WHERE (:category IS NULL OR c.nombre = :category) " +
