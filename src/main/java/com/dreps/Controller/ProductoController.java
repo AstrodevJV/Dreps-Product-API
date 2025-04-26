@@ -25,12 +25,13 @@ public class ProductoController {
         return productoService.findAll();
     }
 
+
     @CrossOrigin(origins = "*")
-    @GetMapping("/productos")
-    public ResponseEntity<Page<ProductoModel>> getProductosPage(
+    @GetMapping("/products")
+    public ResponseEntity<Page<ProductoModel>> getProductosByPage(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        return ResponseEntity.ok(productoService.getProductosByPage(page, size));
+        return ResponseEntity.ok(productoService.getProductosByPageAsc(page, size));
     }
 
     @CrossOrigin(origins = "*")

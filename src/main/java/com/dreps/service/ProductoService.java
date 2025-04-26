@@ -23,15 +23,15 @@ public class ProductoService {
         this.productoRepository = productoRepository;
     }
 
-    public List<ProductoModel> findAllAsc(){
-        return productoRepository.findAllOrderByIdAsc();
+    public List<ProductoModel> findAll(){
+        return productoRepository.findAll();
     }
 
-    public Page<ProductoModel> getProductosByPage(int page,int size) {
+    public Page<ProductoModel> getProductosByPageAsc(int page,int size) {
 
         Pageable pageable = PageRequest.of(page, size);
 
-        return productoRepository.findAll(pageable);
+        return productoRepository.findAllOrderByIdAsc(pageable);
     }
 
     public Page<ProductoModel> getProductosByCategoryAndGender(int page ,int size, String category, String gender) {
