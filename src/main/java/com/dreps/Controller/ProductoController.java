@@ -43,7 +43,7 @@ public class ProductoController {
     }
 
     @CrossOrigin(origins = "*")
-    @GetMapping("/findByName")
+    @GetMapping("/1")
     public ResponseEntity<Page<ProductoModel>> getProductosByName(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
