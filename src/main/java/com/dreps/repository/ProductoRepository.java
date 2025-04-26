@@ -17,9 +17,6 @@ public interface ProductoRepository extends JpaRepository<ProductoModel,Long> {
     @Query("SELECT p FROM ProductoModel p ORDER BY p.id ASC")
     List<ProductoModel> findAllOrderByIdAsc();
 
-    @Query("SELECT p FROM ProductoModel p WHERE p.categoria.id = :categoriaId")
-    List<ProductoModel> findByCategoriaId(@Param("categoriaId") Long categoriaId);
-
     @Query("SELECT p FROM ProductoModel p JOIN p.categoria c " +
             "WHERE (:category IS NULL OR c.nombre = :category) " +
             "AND (:gender IS NULL OR c.genero = :gender)")
