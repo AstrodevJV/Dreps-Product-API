@@ -14,6 +14,9 @@ import java.util.List;
 @Repository
 public interface ProductoRepository extends JpaRepository<ProductoModel,Long> {
 
+    @Query("SELECT p FROM ProductoModel p ORDER BY p.id ASC")
+    List<ProductoModel> findAllOrderByIdAsc();
+
     @Query("SELECT p FROM ProductoModel p WHERE p.categoria.id = :categoriaId")
     List<ProductoModel> findByCategoriaId(@Param("categoriaId") Long categoriaId);
 
