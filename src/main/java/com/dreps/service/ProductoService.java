@@ -42,10 +42,10 @@ public class ProductoService {
     }
 
     public Page<ProductoModel> getProductosByName(int page, int size, String name) {
-        Pageable pageable = PageRequest.of(page, size);
-        String nameLike = "%" + name + "%";
 
-        Page<ProductoModel> products = productoRepository.findByNombre(nameLike, pageable);
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<ProductoModel> products = productoRepository.findByNombre(name,pageable);
 
         if (products.isEmpty()) {
             throw new ProductNotFoundException("Nombre no encontrado " + name);

@@ -22,7 +22,7 @@ public interface ProductoRepository extends JpaRepository<ProductoModel,Long> {
             "AND (:gender IS NULL OR c.genero = :gender)")
     Page<ProductoModel> findByCategoryAndGender(@Param("category") String category,@Param("gender") String gender,Pageable pageable);
 
-    @Query("SELECT p FROM ProductoModel p WHERE p.nombre ILIKE :name")
+    @Query("SELECT p FROM ProductoModel p WHERE p.nombre ILIKE CONCAT('%', :name,'%')")
     Page<ProductoModel> findByNombre(@Param("name") String name, Pageable pageable);
 
 }
