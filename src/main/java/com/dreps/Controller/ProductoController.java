@@ -42,6 +42,15 @@ public class ProductoController {
         return ResponseEntity.ok(productoService.getProductosByCategoryAndGender(page, size, category, gender));
     }
 
+    @CrossOrigin(origins = "*")
+    @GetMapping("/findByName")
+    public ResponseEntity<List<ProductoModel>> getProductosByName(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam String name) {
+        return ResponseEntity.ok(productoService.getProductosByName(page, size , name));
+    }
+
     @GetMapping("/Hello")
     public String Hello() {
        return "Hello World";

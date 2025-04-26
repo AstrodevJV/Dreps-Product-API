@@ -13,8 +13,8 @@ import java.util.Map;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(ProductoNoEncontradoException.class)
-    public ResponseEntity<Map<String, Object>> handleProductoNoEncontradoException(ProductoNoEncontradoException ex){
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleProductoNoEncontradoException(ProductNotFoundException ex){
 
         Map<String, Object> response = new HashMap<>();
         response.put("status", HttpStatus.NOT_FOUND.value());
