@@ -2,6 +2,7 @@ package com.dreps.service;
 
 import com.dreps.Model.UserModel;
 import com.dreps.repository.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -24,7 +25,7 @@ public class UserService {
     public boolean Login(String email, String password) {
         Optional<UserModel> user = userRepository.findByEmail(email);
         if(user.isPresent()) {
-
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         }
 
         return false;
