@@ -26,9 +26,11 @@ public class UserModel {
     @Column(name = "email",nullable = false)
     private String email;
 
+    @Column(name = "rol",nullable = true,length = 20)
+    private String rol;
+
     @Column(name = "contrasena",nullable = false)
     private String contrasena;
 
-    @Column(name = "rol",nullable = true,length = 20)
-    private String rol;
+
 }

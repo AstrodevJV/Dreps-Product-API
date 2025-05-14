@@ -2,6 +2,7 @@ package com.dreps.service;
 
 import com.dreps.Model.UserModel;
 import com.dreps.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -9,16 +10,18 @@ import java.util.Optional;
 
 @Service
 public class UserService {
+    @Autowired
     private UserRepository userRepository;
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     public void saveUser(UserModel user) {
-        if(userRepository.findByEmail(user.getEmail()).isPresent()) {
-            throw new RuntimeException("User already exists");
-        }
 
+        String encrypted = passwordEncoder.encode(user.getContrasena());
+        user.setContrasena(encrypted);
         userRepository.save(user);
     }
 
