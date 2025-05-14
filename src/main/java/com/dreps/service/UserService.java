@@ -17,4 +17,13 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public boolean Login(String email, String password) {
+        Optional<UserModel> user = userRepository.findByEmail(email);
+        if(user.isPresent()) {
+            
+        }
+
+        return false;
+    }
+
 }
