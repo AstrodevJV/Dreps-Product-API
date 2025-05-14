@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/dreps/api/v1")
+@RequestMapping("/products")
 public class ProductoController {
 
 
