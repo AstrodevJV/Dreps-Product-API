@@ -1,6 +1,7 @@
 package com.dreps.service;
 
 import com.dreps.Model.ProductoModel;
+import com.dreps.Model.UserModel;
 import com.dreps.exception.ProductNotFoundException;
 
 import com.dreps.repository.ProductoRepository;
