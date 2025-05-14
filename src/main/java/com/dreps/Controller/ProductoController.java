@@ -27,7 +27,7 @@ public class ProductoController {
 
 
     @CrossOrigin(origins = "*")
-    @GetMapping("/products")
+    @GetMapping("/productsByPage")
     public ResponseEntity<Page<ProductoModel>> getProductosByPage(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
