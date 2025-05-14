@@ -22,13 +22,20 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public boolean Login(String email, String password) {
-        Optional<UserModel> user = userRepository.findByEmail(email);
-        if(user.isPresent()) {
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        }
+    public boolean login(String email, String password) {
 
+        Optional<UserModel> user = userRepository.findByEmail(email);
+
+        if (user.isPresent()) {
+            UserModel userModel = user.get();
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+            if (encoder.matches(password, userModel.getContrasena())) {
+                return true;
+            }
+        }
         return false;
     }
+
 
 }
